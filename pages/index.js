@@ -37,20 +37,26 @@ function Brag({ description, created, supportingLink }) {
     minute: "numeric",
   }).format(new Date(created));
   let date = new Date(created).toLocaleDateString();
+  let imgSrc = "https://loremflickr.com/320/240?random=" + Math.random();
   return (
-    <div className="p-4 w-full sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/4 2xl:w-1/4 mx-4 my-4 border rounded ">
-      <p>{description}</p>
+    <div className="card bordered w-full sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/4 2xl:w-1/4 mx-4 my-4">
+      <figure>
+        <img src={imgSrc} alt="placeholder image" />
+      </figure>
+      <div className="card-body">
+        <p>{description}</p>
 
-      {supportingLink && (
-        <p className="text-center rounded-full py-1 px-1 bg-blue-400  mx-auto text-white max-w-1/2">
-          <a href={supportingLink} target="_blank">
-            Proof &#128279;
-          </a>
-        </p>
-      )}
-      <time className="text-xs">
-        entered: {date} {time} {tzName}
-      </time>
+        <time className="text-xs">
+          entered: {date} {time} {tzName}
+        </time>
+        {supportingLink && (
+          <div className="justify-end card-actions">
+            <a href={supportingLink} target="_blank">
+              <button className="btn btn-secondary">More info</button>
+            </a>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@babel/core": "^7.0.0-0",
     "airtable": "^0.11.1",
     "daisyui": "^1.16.2",
     "next": "latest",
