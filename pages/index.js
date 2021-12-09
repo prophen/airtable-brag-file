@@ -37,7 +37,7 @@ function Brag({ description, created, supportingLink }) {
     minute: "numeric",
   }).format(new Date(created));
   let date = new Date(created).toLocaleDateString();
-  let imgSrc = "https://loremflickr.com/320/240?random=" + Math.random();
+  let imgSrc = "https://placekitten.com/320/240?random=" + Math.random();
   return (
     <div className="card bordered w-full sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/4 2xl:w-1/4 mx-4 my-4">
       <figure>
