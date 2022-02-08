@@ -5,5 +5,6 @@ module.exports = {
     AIRTABLE_TABLE_NAME: process.env.AIRTABLE_TABLE_NAME,
     GITHUB_SECRET: process.env.GITHUB_SECRET,
     GITHUB_ID: process.env.GITHUB_ID,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
 };
