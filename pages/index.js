@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import Airtable from "airtable";
+import { useSession, getSession } from "next-auth/react";
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const airtable = new Airtable({
     apiKey: process.env.AIRTABLE_API_KEY,
   });
@@ -25,6 +26,7 @@ export async function getServerSideProps() {
   });
   return {
     props: {
+      session: await getSession(context),
       brags,
     },
   };
@@ -62,6 +64,9 @@ function Brag({ description, created, supportingLink }) {
 }
 
 export default function Home({ brags }) {
+  const { data: session, status } = useSession();
+
+  console.log(session);
   return (
     <Layout home>
       <Head>
@@ -80,3 +85,11 @@ export default function Home({ brags }) {
     </Layout>
   );
 }
+
+/*
+   Grab session from the server using serverSideProps and hydrate through 
+   all components
+
+   the 'props' object is passed to components accross the app. 
+   additional redirect flag can be employed before the props object
+*/
